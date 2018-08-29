@@ -1,0 +1,43 @@
+{
+  "name": "@rapid-build-ui/rb-base",
+  "version": "0.0.0",
+  "main": "scripts/rb-base.js",
+  "description": "Rapid Build UI Web Component: rb-base",
+  "license": "MIT",
+  "engines": {
+    "node": "8.x",
+    "npm": "6.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    {
+      "name": "Judd Younce",
+      "email": "jyounce@yahoo.com",
+      "url": "https://github.com/jyounce"
+    },
+    {
+      "name": "Yevgeniy Okun",
+      "email": "yevgeniyokun@gmail.com",
+      "url": "https://github.com/yokun"
+    },
+    {
+      "name": "Alina Younce",
+      "email": "crisan_alina2003@yahoo.com",
+      "url": "https://github.com/ayounce"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapid-build-ui/rb-base"
+  },
+  "bugs": {
+    "url": "https://github.com/rapid-build-ui/rb-base/issues"
+  },
+  "flat": true,
+  "dependencies": {
+    "lit-html": "^0.10.2",
+    "skatejs": "^5.2.1"
+  }
+}
