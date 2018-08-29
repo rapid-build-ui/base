@@ -1,5 +1,86 @@
-# &lt;rb-base&gt; web component
-&#9874; Work in progress. Not for use yet.
+# Rapid Build UI · Web Components · Base Class
+Base Class for all &lt;rb-components&gt;.  
 
-## Documentation
-[Showcase Site](https://rapid-build-ui.io/)
+
+## Installation
+```bash
+$ npm install @rapid-build-ui/rb-base
+```
+
+
+## What's Included
+* Web component library [SkateJS](http://skatejs.netlify.com/).
+* The view rendering engine [lit-html](https://polymer.github.io/lit-html/).
+* viewReady() callback
+* Creates this.rb object that contains a set of common helper objects.
+	* this.rb.events
+	* this.rb.guid
+	* this.rb.type
+	* this.rb.view
+
+
+## How To Use
+```js
+/* Example
+ **********/
+import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
+import template from '../views/rb-popover.html';
+
+export class RbPopover extends RbBase() {
+	// Lifecycle
+	viewReady() { // :void
+		super.viewReady && super.viewReady();
+		const trigger = this.shadowRoot.querySelector('.trigger');
+		this.rb.events.add(trigger, 'click touchstart', this.toggle);
+	}
+	// Event Handler
+	toggle(e) { // :void
+		this.showPopover = !this.showPopover;
+	}
+	// Template
+	render({ props }) { // :string
+		return html template;
+	}
+}
+```
+
+
+## Callback ~ viewReady() (optional)
+Executed once, when view is ready and all its rb sub component views are ready.  
+Use when you need to make sure elements are accessible in the shadow dom.
+
+
+## API ~ this.rb.events
+* Properties
+	* events :object (readonly, hashmap of active events)
+* Methods
+	* add(elm, 'space separated events', callback[, opts]) :void
+	* remove(elm, 'space separated events', callback) :void
+	* removeAll([opts]) :void
+	* emit(elm, 'event' [, { detail: any } ]) :boolean
+
+
+## API ~ this.rb.guid
+* Methods
+	* create(maxLength = 12) :string (sometimes returns maxLength - 1 chars)
+
+
+## API ~ this.rb.type
+* Methods (**is.methods() :boolean**)
+	* get(val) :string (returns val type)
+	* is.array(val)
+	* is.boolean(val)
+	* is.function(val)
+	* is.int(val)
+	* is.null(val)
+	* is.number(val)
+	* is.object(val)
+	* is.promise(val)
+	* is.string(val)
+	* is.stringArray(val)
+	* is.undefined(val)
+
+
+## API ~ this.rb.view
+* Properties
+	* isReady :boolean (readonly, will be true when view is ready)

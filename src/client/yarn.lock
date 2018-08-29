@@ -6,6 +6,6 @@ lit-html@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.10.2.tgz#53c846afcf91bb1e6623179ef22e327ab8ac0e0e"
 
-skatejs@^5.2.1:
+skatejs@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/skatejs/-/skatejs-5.2.3.tgz#3a0db8f7ecf89cb4d715f94eb5aae2b415ae8237"

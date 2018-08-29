@@ -1,24 +1,41 @@
-/***********
- * RB-BASE
- ***********/
+/**********************************
+ * RB-BASE (for all rb-components)
+ **********************************/
 import { props, withComponent } from '../../../skatejs/dist/esnext/index.js';
-import { html, withRenderer } from './renderer.js';
-import template from '../views/rb-base.html';
+import { html, render } from '../../../lit-html/lib/lit-extended.js';
+import EventService from './event-service.js';
+import GuidService from './guid-service.js';
+import TypeService from './type-service.js';
+import View from './view-service.js';
 
-export class RbBase extends withComponent(withRenderer()) {
-	/* Properties
-	 *************/
-	static get props() {
-		return {
-			kind: props.string
-		};
+/* RB Base Class
+ ****************/
+const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
+	/* Lifecycle
+	 ************/
+	constructor() { // :void
+		super();
+		this.rb = {
+			events: EventService.call(this),
+			guid:   GuidService,
+			type:   TypeService,
+			view:   View.call(this)
+		}
+	}
+	disconnected() { // :void
+		// console.log('base disconnected');
+		this.rb.events.removeAll({ force: true });
+		// console.log(this.rb.events.events);
 	}
 
-	/* Template
-	 ***********/
-	render({ props }) { // :string
-		return html template;
+	/* @skatejs/renderer-lit-html
+	 *****************************/
+	async renderer(root, call) { // :void
+		render(call(), root);
+		await this.rb.view.readyCallback();
 	}
 }
 
-customElements.define('rb-base', RbBase);
+/* Export it!
+ *************/
+export { html, props, RbBase }
