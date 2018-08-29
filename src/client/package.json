@@ -2,7 +2,7 @@
   "name": "@rapid-build-ui/rb-base",
   "version": "0.0.0",
   "main": "scripts/rb-base.js",
-  "description": "Rapid Build UI Web Component: rb-base",
+  "description": "Rapid Build UI Web Components Base Class: rb-base",
   "license": "MIT",
   "engines": {
     "node": "8.x",
