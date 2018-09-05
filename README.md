@@ -11,8 +11,11 @@ $ npm install @rapid-build-ui/rb-base
 ## What's Included
 * Web component library [SkateJS](http://skatejs.netlify.com/).
 * The view rendering engine [lit-html](https://polymer.github.io/lit-html/).
-* viewReady() callback
-* Creates this.rb object that contains a set of common helper objects.
+* Imports:
+	* view-directives.js
+* Callbacks:
+	* viewReady()
+* Creates this.rb object that contains a set of common helper objects:
 	* this.rb.events
 	* this.rb.guid
 	* this.rb.type
@@ -24,12 +27,13 @@ $ npm install @rapid-build-ui/rb-base
 /* Example
  **********/
 import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
+import view from '../../rb-base/scripts/view-directives.js';
 import template from '../views/rb-popover.html';
 
 export class RbPopover extends RbBase() {
 	// Lifecycle
 	viewReady() { // :void
-		super.viewReady && super.viewReady();
+		super.viewReady && super.viewReady(); // line required
 		const trigger = this.shadowRoot.querySelector('.trigger');
 		this.rb.events.add(trigger, 'click touchstart', this.toggle);
 	}
@@ -45,12 +49,36 @@ export class RbPopover extends RbBase() {
 ```
 
 
-## Callback ~ viewReady() (optional)
-Executed once, when view is ready and all its rb sub component views are ready.  
+## Callbacks (optional)
+
+### viewReady()
+*See "How To Use"*  
+Executed once when view is ready and all its rb sub components views are ready.  
 Use when you need to make sure elements are accessible in the shadow dom.
 
 
-## API ~ this.rb.events
+## Imports (optional)
+
+### view-directives.js
+Returns object of
+[lit-html](https://polymer.github.io/lit-html/guide/writing-templates.html#directives)
+[directives](https://github.com/rapid-build-ui/rb-base/blob/master/src/client/scripts/view-directives.js)
+to be used in view.
+
+```html
+<!-- Example (import view object in js): -->
+<ul>
+	${view.repeat(
+		['hulk','thor'],
+		(hero, i) => html`<li>${i} ${hero}</li>`
+	)}
+</ul>
+```
+
+
+## API
+
+### this.rb.events
 * Properties
 	* events :object (readonly, hashmap of active events)
 * Methods
@@ -60,12 +88,12 @@ Use when you need to make sure elements are accessible in the shadow dom.
 	* emit(elm, 'event' [, { detail: any } ]) :boolean
 
 
-## API ~ this.rb.guid
+### this.rb.guid
 * Methods
 	* create(maxLength = 12) :string (sometimes returns maxLength - 1 chars)
 
 
-## API ~ this.rb.type
+### this.rb.type
 * Methods (**is.methods() :boolean**)
 	* get(val) :string (returns val type)
 	* is.array(val)
@@ -81,6 +109,6 @@ Use when you need to make sure elements are accessible in the shadow dom.
 	* is.undefined(val)
 
 
-## API ~ this.rb.view
+### this.rb.view
 * Properties
 	* isReady :boolean (readonly, will be true when view is ready)
