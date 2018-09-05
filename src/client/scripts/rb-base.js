@@ -2,11 +2,11 @@
  * RB-BASE (for all rb-components)
  **********************************/
 import { props, withComponent } from '../../../skatejs/dist/esnext/index.js';
-import { html, render } from '../../../lit-html/lib/lit-extended.js';
+import { html, render } from '../../../lit-html/lit-html.js';
 import EventService from './event-service.js';
 import GuidService from './guid-service.js';
 import TypeService from './type-service.js';
-import View from './view-service.js';
+import ViewService from './view-service.js';
 
 /* RB Base Class
  ****************/
@@ -19,7 +19,7 @@ const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
 			events: EventService.call(this),
 			guid:   GuidService,
 			type:   TypeService,
-			view:   View.call(this)
+			view:   ViewService.call(this)
 		}
 	}
 	disconnected() { // :void
@@ -38,4 +38,4 @@ const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
 
 /* Export it!
  *************/
-export { html, props, RbBase }
+export { html, props, RbBase };
