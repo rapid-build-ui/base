@@ -1,5 +1,11 @@
-# Rapid Build UI · Web Components · Base Class
-Base Class for all &lt;rb-components&gt;.  
+# Rapid Build UI · Web Components · Base Mixin
+
+Base mixin for all &lt;rb-components&gt;.
+
+**This is not a web component.**  
+It is an internal module for all our web components.  
+Our consumable web components are prefixed with "**rb-**"
+example [rb-button](https://rapid-build-ui.io/components/rb-button).
 
 
 ## Installation
