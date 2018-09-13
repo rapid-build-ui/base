@@ -4,7 +4,6 @@
 import { props, withComponent } from '../../../skatejs/dist/esnext/index.js';
 import { html, render } from '../../../lit-html/lit-html.js';
 import EventService from './event-service.js';
-import TypeService from './type-service.js';
 import ViewService from './view-service.js';
 
 /* RB Base Class
@@ -16,7 +15,6 @@ const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
 		super();
 		this.rb = {
 			events: EventService.call(this),
-			type:   TypeService,
 			view:   ViewService.call(this)
 		}
 	}

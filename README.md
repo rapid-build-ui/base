@@ -13,12 +13,12 @@ $ npm install @rapid-build-ui/rb-base
 * The view rendering engine [lit-html](https://polymer.github.io/lit-html/).
 * Imports:
 	* guid-service.js
+	* type-service.js
 	* view-directives.js
 * Callbacks:
 	* viewReady()
 * Creates this.rb object that contains a set of common helper objects:
 	* this.rb.events
-	* this.rb.type
 	* this.rb.view
 
 
@@ -57,6 +57,7 @@ Executed once when view is ready and all its rb sub components views are ready.
 Use when you need to make sure elements are accessible in the shadow dom.
 
 
+
 ## Imports (optional)
 
 ### guid-service.js
@@ -65,8 +66,30 @@ Use when you need to make sure elements are accessible in the shadow dom.
 
 ```js
 // Example
-import guid from '../../rb-base/scripts/guid-service.js';
-const id = guid.create();
+import Guid from '../../rb-base/scripts/guid-service.js';
+const guid = Guid.create();
+```
+
+
+### type-service.js
+* Methods (**is.methods() :boolean**)
+	* get(val) :string (returns val type)
+	* is.array(val)
+	* is.boolean(val)
+	* is.function(val)
+	* is.int(val)
+	* is.null(val)
+	* is.number(val)
+	* is.object(val)
+	* is.promise(val)
+	* is.string(val)
+	* is.stringArray(val)
+	* is.undefined(val)
+
+```js
+// Example
+import Type from '../../rb-base/scripts/type-service.js';
+const isString = Type.is.string('rapid');
 ```
 
 
@@ -97,22 +120,6 @@ to be used in view.
 	* remove(elm, 'space separated events', callback) :void
 	* removeAll([opts]) :void
 	* emit(elm, 'event' [, { detail: any } ]) :boolean
-
-
-### this.rb.type
-* Methods (**is.methods() :boolean**)
-	* get(val) :string (returns val type)
-	* is.array(val)
-	* is.boolean(val)
-	* is.function(val)
-	* is.int(val)
-	* is.null(val)
-	* is.number(val)
-	* is.object(val)
-	* is.promise(val)
-	* is.string(val)
-	* is.stringArray(val)
-	* is.undefined(val)
 
 
 ### this.rb.view

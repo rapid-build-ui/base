@@ -1,10 +1,10 @@
-/***********************************************************
+/****************************************
  * TYPE SERVICE
- ***********************************************************
+ ****************************************
  * HOW TO USE
- - import TypeService from './type-service.js';
- - this.rb.type = TypeService; :object (set in constructor)
- ***********************************************************/
+ - import Type from './type-service.js';
+ - Type = TypeService; :object
+ ****************************************/
 const TypeService = {
 	/* Return Type as String
 	 ************************/

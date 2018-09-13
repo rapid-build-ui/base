@@ -2,9 +2,9 @@
  * GUID SERVICE
  ****************************************
  * HOW TO USE
- - import guid from './guid-service.js';
+ - import Guid from './guid-service.js';
  * API
- - guid.create(maxLength = 12); :string
+ - Guid.create(maxLength = 12); :string
  ****************************************/
 const GuidService = {
 	create(maxLength = 12) { // :string (sometimes returns maxLength - 1 chars)

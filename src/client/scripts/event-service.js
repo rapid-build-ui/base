@@ -12,7 +12,7 @@
  - this.rb.events.emit(elm, 'event' [, { detail: any } ]); :boolean
  ********************************************************************************/
 import { emit } from '../../../skatejs/dist/esnext/emit.js';
-import guid from './guid-service.js';
+import Guid from './guid-service.js';
 
 /* Event Helpers
  ****************/
@@ -24,7 +24,7 @@ const EventHelper = {
 	},
 	_getSpace(target, space = null) { // :string
 		if (target.dataset.rbEvent) return target.dataset.rbEvent;
-		if (!space) space = guid.create(5);
+		if (!space) space = Guid.create(5);
 		target.dataset.rbEvent = space;
 		return space;
 	},
@@ -99,7 +99,7 @@ const EventHelper = {
 			return EventHelper.getCallbackName.call(this, callback.func);
 
 		if (!callback.name) // for anonymous functions (set name for removeAll())
-			Object.defineProperty(callback, 'name', { value: guid.create(5) });
+			Object.defineProperty(callback, 'name', { value: Guid.create(5) });
 
 		// bound functions are prefixed with 'bound '
 		return callback.name.replace(/^bound /, '');
