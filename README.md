@@ -12,12 +12,12 @@ $ npm install @rapid-build-ui/rb-base
 * Web component library [SkateJS](http://skatejs.netlify.com/).
 * The view rendering engine [lit-html](https://polymer.github.io/lit-html/).
 * Imports:
+	* guid-service.js
 	* view-directives.js
 * Callbacks:
 	* viewReady()
 * Creates this.rb object that contains a set of common helper objects:
 	* this.rb.events
-	* this.rb.guid
 	* this.rb.type
 	* this.rb.view
 
@@ -59,6 +59,17 @@ Use when you need to make sure elements are accessible in the shadow dom.
 
 ## Imports (optional)
 
+### guid-service.js
+* Methods
+	* create(maxLength = 12) :string (sometimes returns maxLength - 1 chars)
+
+```js
+// Example
+import guid from '../../rb-base/scripts/guid-service.js';
+const id = guid.create();
+```
+
+
 ### view-directives.js
 Returns object of
 [lit-html](https://polymer.github.io/lit-html/guide/writing-templates.html#directives)
@@ -86,11 +97,6 @@ to be used in view.
 	* remove(elm, 'space separated events', callback) :void
 	* removeAll([opts]) :void
 	* emit(elm, 'event' [, { detail: any } ]) :boolean
-
-
-### this.rb.guid
-* Methods
-	* create(maxLength = 12) :string (sometimes returns maxLength - 1 chars)
 
 
 ### this.rb.type
