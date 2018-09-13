@@ -66,7 +66,7 @@ Returns object of
 to be used in view.
 
 ```html
-<!-- Example (import view object in js): -->
+<!-- Example (import view object in js, see "How To Use"): -->
 <ul>
 	${view.repeat(
 		['hulk','thor'],
