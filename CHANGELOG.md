@@ -1,3 +1,13 @@
+## [0.0.3](https://github.com/rapid-build-ui/rb-base/compare/v0.0.2...v0.0.3) (2018-09-14)
+
+
+### Features
+
+* **lit-html:** bump to v0.11.3 and expose it's two new view directives classMap and styleMap ([2867f88](https://github.com/rapid-build-ui/rb-base/commit/2867f88))
+* **this.rb.elms:** provide namespace for storing component elements via this.rb.elms property ([41ad0b7](https://github.com/rapid-build-ui/rb-base/commit/41ad0b7))
+
+
+
 ## [0.0.2](https://github.com/rapid-build-ui/rb-base/compare/v0.0.1...v0.0.2) (2018-09-05)
 
 
