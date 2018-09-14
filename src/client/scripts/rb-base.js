@@ -14,6 +14,7 @@ const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
 	constructor() { // :void
 		super();
 		this.rb = {
+			elms:   {},
 			events: EventService.call(this),
 			view:   ViewService.call(this)
 		}

@@ -24,6 +24,7 @@ $ npm install @rapid-build-ui/rb-base
 * Callbacks:
 	* viewReady()
 * Creates this.rb object that contains a set of common helper objects:
+	* this.rb.elms
 	* this.rb.events
 	* this.rb.view
 
@@ -40,8 +41,8 @@ export class RbPopover extends RbBase() {
 	// Lifecycle
 	viewReady() { // :void
 		super.viewReady && super.viewReady(); // line required
-		const trigger = this.shadowRoot.querySelector('.trigger');
-		this.rb.events.add(trigger, 'click touchstart', this.toggle);
+		this.rb.elms.trigger = this.shadowRoot.querySelector('.trigger');
+		this.rb.events.add(this.rb.elms.trigger, 'click touchstart', this.toggle);
 	}
 	// Event Handler
 	toggle(e) { // :void
@@ -117,6 +118,11 @@ to be used in view.
 
 
 ## API
+
+### this.rb.elms
+*See "How To Use"*  
+This is object/hashmap to store component elements.
+
 
 ### this.rb.events
 * Properties
