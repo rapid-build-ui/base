@@ -37,7 +37,7 @@
   },
   "flat": true,
   "dependencies": {
-    "lit-html": "^0.11.3",
+    "lit-html": "^0.11.4",
     "skatejs": "^5.2.4"
   }
 }
