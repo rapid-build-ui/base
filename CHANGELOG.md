@@ -1,3 +1,12 @@
+## [0.0.4](https://github.com/rapid-build-ui/rb-base/compare/v0.0.3...v0.0.4) (2018-09-26)
+
+
+### Dependencies
+
+* **bump:** dep lit-html v0.11.4 ([609e299](https://github.com/rapid-build-ui/rb-base/commit/609e299))
+
+
+
 ## [0.0.3](https://github.com/rapid-build-ui/rb-base/compare/v0.0.2...v0.0.3) (2018-09-14)
 
 
