@@ -19,17 +19,19 @@ const RbBase = (Base = HTMLElement) => class extends withComponent(Base) {
 			view:   ViewService.call(this)
 		}
 	}
-	disconnected() { // :void
-		// console.log('base disconnected');
+	disconnectedCallback() { // :void
+		super.disconnectedCallback && super.disconnectedCallback();
 		this.rb.events.removeAll({ force: true });
-		// console.log(this.rb.events.events);
+		// console.log(`${this.localName} disconnected:`, this.rb.events.events);
 	}
 
 	/* @skatejs/renderer-lit-html
 	 *****************************/
 	async renderer(root, call) { // :void
 		render(call(), root);
-		await this.rb.view.readyCallback();
+		if (this.rb.view.isReady) return;
+		// console.log(`${this.localName} view ready:`, this.rb.view.isReady);
+		await this.rb.view.readyCallback(); // called once when rb view is ready
 	}
 }
 
