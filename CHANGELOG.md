@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/rapid-build-ui/rb-base/compare/v0.0.5...v0.0.6) (2018-12-05)
+
+
+### Bug Fixes
+
+* **iOS:** from randomly losing the component template via bumping dep lit-html to v0.14.0 ([a6c0547](https://github.com/rapid-build-ui/rb-base/commit/a6c0547))
+
+
+
 ## [0.0.5](https://github.com/rapid-build-ui/rb-base/compare/v0.0.4...v0.0.5) (2018-11-13)
 
 
