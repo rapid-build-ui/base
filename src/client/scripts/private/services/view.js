@@ -1,8 +1,8 @@
 /********************************************************************
  * VIEW SERVICE
- ********************************************************************
+ * -----------------------------------------------------------------
  * HOW TO USE
- - import View from './view-service.js';
+ - import ViewService from './view.js';
  - this.rb.view = View.call(this); :object (set in constructor)
  * API
  - this.rb.view.isReady; :boolean (readonly: set in readyCallback())
