@@ -9,7 +9,7 @@ const TypeService = {
 	/* Return Type as String
 	 ************************/
 	get(v) { // :string
-		for (let key in this.is) {
+		for (const key in this.is) {
 			if (!this.is.hasOwnProperty(key)) continue;
 			if (key === 'stringArray') continue; // TODO
 			if (this.is[key](v)) return key;
@@ -54,11 +54,9 @@ const TypeService = {
 			return typeof v === 'string';
 		},
 		stringArray(v) {
-			var i, len, val;
 			if (!this.array(v)) return false;
 			if (!v.length) return false;
-			for (i = 0, len = v.length; i < len; i++) {
-				val = v[i];
+			for (const val of v) {
 				if (!this.string(val)) return false;
 			}
 			return true;
