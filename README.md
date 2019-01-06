@@ -22,7 +22,7 @@ $ yarn add @rapid-build-ui/rb-base
 * API (creates this.rb object that contains a set of common helper objects):
 	* [this.rb.elms](#thisrbelms)
 	* [this.rb.events](#thisrbevents)
-	* [this.rb.view](#thisrbevents)
+	* [this.rb.view](#thisrbview)
 * Callbacks:
 	* [viewReady()](#viewready)
 * Imports:
