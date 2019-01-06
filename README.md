@@ -18,17 +18,23 @@ $ yarn add @rapid-build-ui/rb-base
 
 ## What's Included
 * Web component library [SkateJS](http://skatejs.netlify.com/).
+
 * The view rendering engine [lit-html](https://lit-html.polymer-project.org/).
-* API (creates this.rb object that contains a set of common helper objects):
+
+* [API](#api) (creates this.rb object that contains a set of common helper objects):
 	* [this.rb.elms](#thisrbelms)
 	* [this.rb.events](#thisrbevents)
 	* [this.rb.view](#thisrbview)
-* Callbacks:
+
+* [Callbacks](#callbacks-optional):
 	* [viewReady()](#viewready)
-* Imports:
+
+* [Imports](#imports-optional):
 	* [guid service](#guid-service)
 	* [type service](#type-service)
 	* [view directives](#view-directives)
+
+* [Slot Mixin](#slot-mixin) (adds helpers onto this for working with slots)
 
 
 
@@ -158,3 +164,30 @@ import view from '../../rb-base/scripts/public/view/directives.js';
 	)}
 </ul>
 ```
+
+
+
+## Slot Mixin
+Adds helpers onto this for working with slots.
+
+* Constructor
+	* sets this.state.slots = {}
+		* Which can be used for conditionals in the view.
+
+* Getters
+	* this._hasLightDom :boolean (readonly)
+		* Determines if component has [light dom](https://goo.gl/VzFxn4).
+
+	* this._lightDomSlotNames :{ [slotName]: boolean } (readonly)
+		* An object/hashmap with the names of all the light dom [slot names](https://goo.gl/mCrwgQ).
+
+* Methods
+	* this._initSlotStates() :void
+		* *Run in [viewReady()](#viewready)*.
+		* Runs this.\_setSlotStates(this._lightDomSlotNames).
+
+	* this._cleanLightDomWhitespace() :void
+		* Mutates this.childNodes.
+
+	* this._setSlotStates(slotNames={}) :void
+		* Mutates this.state.slots.
