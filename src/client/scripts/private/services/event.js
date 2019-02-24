@@ -1,8 +1,8 @@
 /********************************************************************************
  * EVENT SERVICE
- ********************************************************************************
+ * -----------------------------------------------------------------------------
  * HOW TO USE
- - import EventService from './event-service.js';
+ - import EventService from './event.js';
  - this.rb.events = EventService.call(this); :object (set in constructor)
  * API
  - this.rb.events.events; :object (readonly: hashmap of events)
@@ -11,8 +11,8 @@
  - this.rb.events.removeAll([options]); :void
  - this.rb.events.emit(elm, 'event' [, { detail: any } ]); :boolean
  ********************************************************************************/
-import { emit } from '../../../skatejs/dist/esnext/emit.js';
-import Guid from './guid-service.js';
+import { emit } from '../../../../../skatejs/dist/esnext/emit.js';
+import Guid     from '../../public/services/guid.js';
 
 /* Event Helpers
  ****************/
