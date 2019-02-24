@@ -1,3 +1,13 @@
+## [0.0.7](https://github.com/rapid-build-ui/rb-base/compare/v0.0.6...v0.0.7) (2019-02-24)
+
+
+### Features
+
+* **bump:** dep lit-html to v1.0.0 from v0.14.0 ([ca13835](https://github.com/rapid-build-ui/rb-base/commit/ca13835))
+* **slot mixin:** adds helpers for working with slots ([5dbd4f6](https://github.com/rapid-build-ui/rb-base/commit/5dbd4f6))
+
+
+
 ## [0.0.6](https://github.com/rapid-build-ui/rb-base/compare/v0.0.5...v0.0.6) (2018-12-05)
 
 
