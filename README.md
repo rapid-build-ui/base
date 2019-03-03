@@ -31,9 +31,9 @@ $ yarn add @rapid-build-ui/rb-base
 
 * [Imports](#imports-optional):
 	* [guid service](#guid-service)
+	* [property converters](#property-converters)
 	* [type service](#type-service)
 	* [view directives](#view-directives)
-	* [property converters](#property-converters)
 
 * [Slot Mixin](#slot-mixin) (adds helpers onto this for working with slots)
 
