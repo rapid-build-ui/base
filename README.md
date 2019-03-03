@@ -33,7 +33,7 @@ $ yarn add @rapid-build-ui/rb-base
 	* [guid service](#guid-service)
 	* [type service](#type-service)
 	* [view directives](#view-directives)
-	* [property converters](#properties-converters)
+	* [property converters](#property-converters)
 
 * [Slot Mixin](#slot-mixin) (adds helpers onto this for working with slots)
 
