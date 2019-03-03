@@ -124,6 +124,9 @@ const guid = Guid.create();
 
 
 ### property converters
+All methods convert the attribute's value to a type and returns it.  
+The first param is the attribute's value which is always a string.
+
 * Methods
 	* valueless(val) :boolean
 
