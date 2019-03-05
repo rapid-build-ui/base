@@ -1,13 +1,13 @@
-/********************************************************************
+/**********************************************************************
  * VIEW SERVICE
- * -----------------------------------------------------------------
+ * -------------------------------------------------------------------
  * HOW TO USE
  - import ViewService from './view.js';
- - this.rb.view = View.call(this); :object (set in constructor)
+ - this.rb.view = ViewService.call(this); :object (set in constructor)
  * API
  - this.rb.view.isReady; :boolean (readonly: set in readyCallback())
  - this.rb.view.readyCallback(); :void (run in rb-base's renderer())
- ********************************************************************/
+ **********************************************************************/
 
 /* View Helper
  **************/

@@ -31,6 +31,7 @@ $ yarn add @rapid-build-ui/rb-base
 
 * [Imports](#imports-optional):
 	* [guid service](#guid-service)
+	* [property converters](#property-converters)
 	* [type service](#type-service)
 	* [view directives](#view-directives)
 
@@ -43,7 +44,7 @@ $ yarn add @rapid-build-ui/rb-base
 /* Example
  **********/
 import { RbBase, props, html } from '../../rb-base/scripts/rb-base.js';
-import view                    from '../../rb-base/scripts/public/view/directives.js';
+import View                    from '../../rb-base/scripts/public/view/directives.js';
 import template                from '../views/rb-popover.html';
 
 export class RbPopover extends RbBase() {
@@ -122,6 +123,29 @@ const guid = Guid.create();
 ```
 
 
+### property converters
+All methods convert the attribute's value to a type and returns it.  
+The first param is the attribute's value which is always a string.
+
+* Methods
+	* boolean(val) :boolean
+	* valueless(val) :boolean
+
+```js
+// Example
+import Converter from from '../../rb-base/scripts/public/props/converters.js';
+class RbIcon {
+	static get props() {
+		return {
+			spin: Object.assign({}, props.boolean, {
+				deserialize: Converter.valueless
+			})
+		};
+	}
+}
+```
+
+
 ### type service
 * Methods (**is.methods() :boolean**)
 	* get(val) :string (returns val type)
@@ -152,13 +176,13 @@ to be used in view.
 
 ```js
 // Example
-import view from '../../rb-base/scripts/public/view/directives.js';
+import View from '../../rb-base/scripts/public/view/directives.js';
 ```
 
 ```html
-<!-- Example (import view object in js, see "How To Use"): -->
+<!-- Example (import View object in js, see "How To Use"): -->
 <ul>
-	${view.repeat(
+	${View.repeat(
 		['hulk','thor'],
 		(hero, i) => html`<li>${i} ${hero}</li>`
 	)}
