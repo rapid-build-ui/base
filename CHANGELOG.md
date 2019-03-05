@@ -1,3 +1,13 @@
+## [0.0.8](https://github.com/rapid-build-ui/rb-base/compare/v0.0.7...v0.0.8) (2019-03-05)
+
+
+### Features
+
+* **property converters:** helpers for deserializing attributes ([db7e1eb](https://github.com/rapid-build-ui/rb-base/commit/db7e1eb))
+* **new converter:** boolean ([13eb1d4](https://github.com/rapid-build-ui/rb-base/commit/13eb1d4))
+
+
+
 ## [0.0.7](https://github.com/rapid-build-ui/rb-base/compare/v0.0.6...v0.0.7) (2019-02-24)
 
 
