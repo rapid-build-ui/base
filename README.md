@@ -128,6 +128,7 @@ All methods convert the attribute's value to a type and returns it.
 The first param is the attribute's value which is always a string.
 
 * Methods
+	* boolean(val) :boolean
 	* valueless(val) :boolean
 
 ```js
