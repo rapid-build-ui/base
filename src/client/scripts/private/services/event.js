@@ -11,12 +11,16 @@
  - this.rb.events.removeAll([options]); :void
  - this.rb.events.emit(elm, 'event' [, { detail: any } ]); :boolean
  ********************************************************************************/
-import { emit } from '../../../../../skatejs/dist/esnext/emit.js';
-import Guid     from '../../public/services/guid.js';
+import Guid from '../../public/services/guid.js';
 
 /* Event Helpers
  ****************/
 const EventHelper = {
+	customEvtDefaults: { // for EventService.emit()
+		bubbles:    true,
+		cancelable: true,
+		composed:   false
+	},
 	_getLoc(target) { // :string
 		if (target.getRootNode().host) return 'shadow';
 		if (target.assignedSlot) return 'slot';
@@ -168,7 +172,9 @@ const EventService = function() { // :object (this = rb-component)
 			if (!!opts.force) _events = {};
 		},
 		emit: (target, evt, opts={}) => { // :boolean
-			return emit(target, evt, opts); // returns elm.dispatchEvent(e)
+			const evtOpts = Object.assign({}, EventHelper.customEvtDefaults, opts);
+			const evtObj  = new CustomEvent(evt, evtOpts);
+			return target.dispatchEvent(evtObj);
 		}
 	};
 };
