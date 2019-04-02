@@ -24,6 +24,7 @@ $ yarn add @rapid-build-ui/rb-base
 * [API](#api) (creates this.rb object that contains a set of common helper objects):
 	* [this.rb.elms](#thisrbelms)
 	* [this.rb.events](#thisrbevents)
+	* [this.rb.events.host](#thisrbeventshost)
 	* [this.rb.view](#thisrbview)
 
 * [Callbacks](#callbacks-optional):
@@ -93,6 +94,27 @@ export class RbPopover extends RbBase() {
 		* opts :{}
 			* opts.force (internal option) :boolean
 				* forces events to be set to empty {}
+
+
+### this.rb.events.host
+* Properties
+	* events :object (readonly, hashmap of active host events)
+* Methods
+	* add([event types]) :void
+		* usually ran in component constructor
+		* event types example: ['click', 'focus']
+		* examples:
+			* this.rb.events.host.add(['click']);
+			* this.rb.events.add(this, 'click', this.rb.events.host.run);
+	* remove([event types]) :void
+		* event types example: ['click', 'focus']
+	* removeAll() :void
+	* run(event) :any (event :object)
+		* runs event that was added via add()
+		* supports promises (see isPending())
+		* example: this.rb.events.host.run(event)
+	* isPending(event) :boolean (event :object | string)
+		* returns true if function returned a promise and it's pending
 
 
 ### this.rb.view

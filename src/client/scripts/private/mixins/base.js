@@ -20,7 +20,10 @@ const Base = (BaseElm = HTMLElement) => class extends withComponent(BaseElm) {
 	disconnectedCallback() { // :void
 		super.disconnectedCallback && super.disconnectedCallback();
 		this.rb.events.removeAll({ force: true });
+		this.rb.events.host.removeAll();
+		this.rb.elms = {};
 		// console.log(`${this.localName} disconnected:`, this.rb.events.events);
+		// console.log(`${this.localName} disconnected:`, this.rb.events.host.events);
 	}
 
 	/* @skatejs/renderer-lit-html

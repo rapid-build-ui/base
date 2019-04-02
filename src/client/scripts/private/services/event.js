@@ -12,6 +12,7 @@
  - this.rb.events.emit(elm, 'event' [, { detail: any } ]); :boolean
  ********************************************************************************/
 import Guid from '../../public/services/guid.js';
+import Type from '../../public/services/type.js';
 
 /* Event Helpers
  ****************/
@@ -107,6 +108,14 @@ const EventHelper = {
 
 		// bound functions are prefixed with 'bound '
 		return callback.name.replace(/^bound /, '');
+	},
+	setHostEvent(hostEvents, evt, func, opts={}) { // :void
+		hostEvents[evt] = {
+			pending: false,
+			func: func.bind(this) // by default bind to rb-component
+		}
+		if (!opts.clear) return;
+		this[opts.onEvt] = null; // nullify when onevent is declared in html
 	}
 };
 
@@ -116,6 +125,7 @@ const EventService = function() { // :object (this = rb-component)
 	/* Private
 	 **********/
 	let _events = {};
+	let _hostEvents = {};
 
 	/* Public
 	 *********/
@@ -175,6 +185,58 @@ const EventService = function() { // :object (this = rb-component)
 			const evtOpts = Object.assign({}, EventHelper.customEvtDefaults, opts);
 			const evtObj  = new CustomEvent(evt, evtOpts);
 			return target.dispatchEvent(evtObj);
+		},
+		/* Host Events
+		 **************/
+		host: {
+			get events() { // :object (readonly: hashmap of host events)
+				return _hostEvents;
+			},
+			add: (events=[]) => { // :void (usually ran in component constructor)
+				if (!events.length) return; // ex: ['click','focus']
+				for (const evt of events) {
+					const onEvt = `on${evt}`; // ex: onclick
+					if (this.hasAttribute(onEvt))
+						EventHelper.setHostEvent.call(this, _hostEvents, evt, this[onEvt], {
+							onEvt,
+							clear: true
+						});
+					// dynamic getters and setters
+					Object.defineProperty(this, onEvt, {
+						get() { // :object
+							return _hostEvents[evt];
+						},
+						set(func) {
+							EventHelper.setHostEvent.call(this, _hostEvents, evt, func);
+						}
+					});
+				}
+			},
+			remove: (events=[]) => { // :void
+				if (!events.length) return;
+				for (const evt of events)
+					delete _hostEvents[evt];
+			},
+			removeAll: () => { // :void
+				_hostEvents = {};
+			},
+			run: async evt => { // :any (evt :object<event>)
+				const hostEvent = _hostEvents[evt.type];
+				if (!hostEvent) return;
+				if (hostEvent.pending) return;
+				if (!Type.is.function(hostEvent.func)) return;
+				hostEvent.pending = true;
+				const result = await hostEvent.func(evt);
+				hostEvent.pending = false;
+				return result;
+			},
+			isPending: evt => { // :boolean (evt :object<event> | string<eventType>)
+				if (!evt) return false;
+				if (Type.is.object(evt)) evt = evt.type;
+				const hostEvent = _hostEvents[evt];
+				if (!hostEvent) return false;
+				return hostEvent.pending;
+			}
 		}
 	};
 };
