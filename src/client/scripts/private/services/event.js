@@ -109,6 +109,25 @@ const EventHelper = {
 		// bound functions are prefixed with 'bound '
 		return callback.name.replace(/^bound /, '');
 	},
+	getHostEvent(hostEvents, evt) { // :object<event> | void
+		if (!evt) return;
+		const evtType = Type.is.object(evt) ? evt.type : evt;
+		if (!hostEvents[evtType]) return;
+		if (Type.is.object(evt)) return evt;
+		const mouseEvts = ['click','contextmenu','dblclick'];
+		let newEvt;
+		if (mouseEvts.includes(evt) || evt.includes('mouse')) { // mouse ex: 'mouseover'
+			newEvt = new MouseEvent(evt, {
+				bubbles:    true,
+				cancelable: true,
+				composed:   true,
+				view:       window
+			});
+		}
+		if (!newEvt) return;
+		this.dispatchEvent(newEvt); // sets event targets
+		return newEvt;
+	},
 	setHostEvent(hostEvents, evt, func, opts={}) { // :void
 		hostEvents[evt] = {
 			pending: false,
@@ -220,7 +239,9 @@ const EventService = function() { // :object (this = rb-component)
 			removeAll: () => { // :void
 				_hostEvents = {};
 			},
-			run: async evt => { // :any (evt :object<event>)
+			run: async evt => { // :any (evt :object<event> | string<eventType>)
+				evt = EventHelper.getHostEvent.call(this, _hostEvents, evt);
+				if (!evt) return;
 				const hostEvent = _hostEvents[evt.type];
 				if (!hostEvent) return;
 				if (hostEvent.pending) return;

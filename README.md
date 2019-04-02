@@ -109,7 +109,7 @@ export class RbPopover extends RbBase() {
 	* remove([event types]) :void
 		* event types example: ['click', 'focus']
 	* removeAll() :void
-	* run(event) :any (event :object)
+	* run(event) :any (event :object | string)
 		* runs event that was added via add()
 		* supports promises (see isPending())
 		* example: this.rb.events.host.run(event)
