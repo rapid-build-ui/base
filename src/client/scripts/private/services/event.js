@@ -128,13 +128,17 @@ const EventHelper = {
 		this.dispatchEvent(newEvt); // sets event targets
 		return newEvt;
 	},
-	setHostEvent(hostEvents, evt, func, opts={}) { // :void
+	getHostAttrEvent(onEvt) { // :function | void (only ran in host.add() before getters and setters)
+		if (!this.hasAttribute(onEvt)) return;
+		const func = this[onEvt];
+		this[onEvt] = null; // nullify to prevent double firing
+		return func;
+	},
+	setHostEvent(hostEvents, evt, func) { // :void
 		hostEvents[evt] = {
 			pending: false,
 			func: func.bind(this) // by default bind to rb-component
 		}
-		if (!opts.clear) return;
-		this[opts.onEvt] = null; // nullify when onevent is declared in html
 	}
 };
 
@@ -214,12 +218,8 @@ const EventService = function() { // :object (this = rb-component)
 			add: (events=[]) => { // :void (usually ran in component constructor)
 				if (!events.length) return; // ex: ['click','focus']
 				for (const evt of events) {
-					const onEvt = `on${evt}`; // ex: onclick
-					if (this.hasAttribute(onEvt))
-						EventHelper.setHostEvent.call(this, _hostEvents, evt, this[onEvt], {
-							onEvt,
-							clear: true
-						});
+					const onEvt     = `on${evt}`; // ex: onclick
+					const onAttrEvt = EventHelper.getHostAttrEvent.call(this, onEvt);
 					// dynamic getters and setters
 					Object.defineProperty(this, onEvt, {
 						get() { // :object
@@ -229,6 +229,8 @@ const EventService = function() { // :object (this = rb-component)
 							EventHelper.setHostEvent.call(this, _hostEvents, evt, func);
 						}
 					});
+					if (!onAttrEvt) continue;
+					this[onEvt] = onAttrEvt;
 				}
 			},
 			remove: (events=[]) => { // :void
