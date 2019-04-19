@@ -5,6 +5,8 @@ import { props, withComponent } from '../../../../../skatejs/dist/esnext/index.j
 import { html, render }         from '../../../../../lit-html/lit-html.js';
 import EventService             from '../../private/services/event.js';
 import ViewService              from '../../private/services/view.js';
+import Styles                   from '../../private/services/styles.js';
+Styles.addUtils(); // only runs once
 
 const Base = (BaseElm = HTMLElement) => class extends withComponent(BaseElm) {
 	/* Lifecycle
