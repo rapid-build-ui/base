@@ -1,14 +1,15 @@
 /*************************************
  * BASE MIXIN (for all rb-components)
  *************************************/
-import { props, withComponent } from '../../../../../skatejs/dist/esnext/index.js';
-import { html, render }         from '../../../../../lit-html/lit-html.js';
-import EventService             from '../../private/services/event.js';
-import ViewService              from '../../private/services/view.js';
-import Styles                   from '../../private/services/styles.js';
+import { withRenderer }      from '../../../../../skatejs/dist/esnext/with-renderer.js';
+import { props, withUpdate } from '../../../../../skatejs/dist/esnext/with-update.js';
+import { html, render }      from '../../../../../lit-html/lit-html.js';
+import EventService          from '../../private/services/event.js';
+import ViewService           from '../../private/services/view.js';
+import Styles                from '../../private/services/styles.js';
 Styles.addUtils(); // only runs once
 
-const Base = (BaseElm = HTMLElement) => class extends withComponent(BaseElm) {
+const Base = (BaseElm = HTMLElement) => class extends withUpdate(withRenderer(BaseElm)) {
 	/* Lifecycle
 	 ************/
 	constructor() { // :void
