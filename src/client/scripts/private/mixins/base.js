@@ -1,12 +1,15 @@
 /*************************************
  * BASE MIXIN (for all rb-components)
  *************************************/
-import { props, withComponent } from '../../../../../skatejs/dist/esnext/index.js';
-import { html, render }         from '../../../../../lit-html/lit-html.js';
-import EventService             from '../../private/services/event.js';
-import ViewService              from '../../private/services/view.js';
+import { withRenderer }      from '../../../../../skatejs/dist/esnext/with-renderer.js';
+import { props, withUpdate } from '../../../../../skatejs/dist/esnext/with-update.js';
+import { html, render }      from '../../../../../lit-html/lit-html.js';
+import EventService          from '../../private/services/event.js';
+import ViewService           from '../../private/services/view.js';
+import Styles                from '../../private/services/styles.js';
+Styles.addUtils(); // only runs once
 
-const Base = (BaseElm = HTMLElement) => class extends withComponent(BaseElm) {
+const Base = (BaseElm = HTMLElement) => class extends withUpdate(withRenderer(BaseElm)) {
 	/* Lifecycle
 	 ************/
 	constructor() { // :void
@@ -20,7 +23,10 @@ const Base = (BaseElm = HTMLElement) => class extends withComponent(BaseElm) {
 	disconnectedCallback() { // :void
 		super.disconnectedCallback && super.disconnectedCallback();
 		this.rb.events.removeAll({ force: true });
+		this.rb.events.host.removeAll();
+		this.rb.elms = {};
 		// console.log(`${this.localName} disconnected:`, this.rb.events.events);
+		// console.log(`${this.localName} disconnected:`, this.rb.events.host.events);
 	}
 
 	/* @skatejs/renderer-lit-html

@@ -1,7 +1,7 @@
 /*********************************************
  * VIEW DIRECTIVES (from lit-html >= v0.14.0)
  *********************************************/
-import { directive }    from '../../../../../lit-html/lit-html.js';
+import { directive, nothing } from '../../../../../lit-html/lit-html.js';
 import { asyncAppend }  from '../../../../../lit-html/directives/async-append.js';
 import { asyncReplace } from '../../../../../lit-html/directives/async-replace.js';
 import { cache }        from '../../../../../lit-html/directives/cache.js';
@@ -13,9 +13,9 @@ import { styleMap }     from '../../../../../lit-html/directives/style-map.js';
 import { unsafeHTML }   from '../../../../../lit-html/directives/unsafe-html.js';
 import { until }        from '../../../../../lit-html/directives/until.js';
 
-/* View Directives
- ******************/
-const ViewDirectives = {
+/* Export it!
+ *************/
+export default {
 	asyncAppend,
 	asyncReplace,
 	cache,
@@ -23,13 +23,9 @@ const ViewDirectives = {
 	directive,
 	guard,
 	ifDefined,
+	nothing,
 	repeat,
 	styleMap,
 	unsafeHTML,
 	until
-}
-
-/* Export it!
- *************/
-export default ViewDirectives;
-
+};

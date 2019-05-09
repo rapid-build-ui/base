@@ -11,12 +11,17 @@
  - this.rb.events.removeAll([options]); :void
  - this.rb.events.emit(elm, 'event' [, { detail: any } ]); :boolean
  ********************************************************************************/
-import { emit } from '../../../../../skatejs/dist/esnext/emit.js';
-import Guid     from '../../public/services/guid.js';
+import Guid from '../../public/services/guid.js';
+import Type from '../../public/services/type.js';
 
 /* Event Helpers
  ****************/
 const EventHelper = {
+	customEvtDefaults: { // for EventService.emit()
+		bubbles:    true,
+		cancelable: true,
+		composed:   false
+	},
 	_getLoc(target) { // :string
 		if (target.getRootNode().host) return 'shadow';
 		if (target.assignedSlot) return 'slot';
@@ -103,6 +108,37 @@ const EventHelper = {
 
 		// bound functions are prefixed with 'bound '
 		return callback.name.replace(/^bound /, '');
+	},
+	getHostEvent(hostEvents, evt) { // :object<event> | void
+		if (!evt) return;
+		const evtType = Type.is.object(evt) ? evt.type : evt;
+		if (!hostEvents[evtType]) return;
+		if (Type.is.object(evt)) return evt;
+		const mouseEvts = ['click','contextmenu','dblclick'];
+		let newEvt;
+		if (mouseEvts.includes(evt) || evt.includes('mouse')) { // mouse ex: 'mouseover'
+			newEvt = new MouseEvent(evt, {
+				bubbles:    true,
+				cancelable: true,
+				composed:   true,
+				view:       window
+			});
+		}
+		if (!newEvt) return;
+		this.dispatchEvent(newEvt); // sets event targets
+		return newEvt;
+	},
+	getHostAttrEvent(onEvt) { // :function | void (only ran in host.add() before getters and setters)
+		if (!this.hasAttribute(onEvt)) return;
+		const func = this[onEvt];
+		this[onEvt] = null; // nullify to prevent double firing
+		return func;
+	},
+	setHostEvent(hostEvents, evt, func) { // :void
+		hostEvents[evt] = {
+			pending: false,
+			func: func.bind(this) // by default bind to rb-component
+		}
 	}
 };
 
@@ -112,6 +148,7 @@ const EventService = function() { // :object (this = rb-component)
 	/* Private
 	 **********/
 	let _events = {};
+	let _hostEvents = {};
 
 	/* Public
 	 *********/
@@ -168,7 +205,61 @@ const EventService = function() { // :object (this = rb-component)
 			if (!!opts.force) _events = {};
 		},
 		emit: (target, evt, opts={}) => { // :boolean
-			return emit(target, evt, opts); // returns elm.dispatchEvent(e)
+			const evtOpts = Object.assign({}, EventHelper.customEvtDefaults, opts);
+			const evtObj  = new CustomEvent(evt, evtOpts);
+			return target.dispatchEvent(evtObj);
+		},
+		/* Host Events
+		 **************/
+		host: {
+			get events() { // :object (readonly: hashmap of host events)
+				return _hostEvents;
+			},
+			add: (events=[]) => { // :void (usually ran in component constructor)
+				if (!events.length) return; // ex: ['click','focus']
+				for (const evt of events) {
+					const onEvt     = `on${evt}`; // ex: onclick
+					const onAttrEvt = EventHelper.getHostAttrEvent.call(this, onEvt);
+					// dynamic getters and setters
+					Object.defineProperty(this, onEvt, {
+						get() { // :object
+							return _hostEvents[evt];
+						},
+						set(func) {
+							EventHelper.setHostEvent.call(this, _hostEvents, evt, func);
+						}
+					});
+					if (!onAttrEvt) continue;
+					this[onEvt] = onAttrEvt;
+				}
+			},
+			remove: (events=[]) => { // :void
+				if (!events.length) return;
+				for (const evt of events)
+					delete _hostEvents[evt];
+			},
+			removeAll: () => { // :void
+				_hostEvents = {};
+			},
+			run: async evt => { // :any (evt :object<event> | string<eventType>)
+				evt = EventHelper.getHostEvent.call(this, _hostEvents, evt);
+				if (!evt) return;
+				const hostEvent = _hostEvents[evt.type];
+				if (!hostEvent) return;
+				if (hostEvent.pending) return;
+				if (!Type.is.function(hostEvent.func)) return;
+				hostEvent.pending = true;
+				const result = await hostEvent.func(evt);
+				hostEvent.pending = false;
+				return result;
+			},
+			isPending: evt => { // :boolean (evt :object<event> | string<eventType>)
+				if (!evt) return false;
+				if (Type.is.object(evt)) evt = evt.type;
+				const hostEvent = _hostEvents[evt];
+				if (!hostEvent) return false;
+				return hostEvent.pending;
+			}
 		}
 	};
 };
