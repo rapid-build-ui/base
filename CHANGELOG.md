@@ -1,3 +1,18 @@
+## [0.0.9](https://github.com/rapid-build-ui/rb-base/compare/v0.0.8...v0.0.9) (2019-05-09)
+
+
+### Features
+
+* **host event interceptor:** technique for intercepting and exposing onevents for the components ([914c1f5](https://github.com/rapid-build-ui/rb-base/commit/914c1f5))
+* **styles service:** for creating helper css classes to prevent fouc ([4054d4b](https://github.com/rapid-build-ui/rb-base/commit/4054d4b))
+
+
+### Performance Improvements
+
+* **base mixin:** only import and use what is necessary from skatejs ([8efc8f3](https://github.com/rapid-build-ui/rb-base/commit/8efc8f3))
+
+
+
 ## [0.0.8](https://github.com/rapid-build-ui/rb-base/compare/v0.0.7...v0.0.8) (2019-03-05)
 
 

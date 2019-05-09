@@ -1,6 +1,6 @@
 {
   "name": "@rapid-build-ui/rb-base",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "scripts/rb-base.js",
   "description": "Rapid Build UI Web Components Base Class: rb-base",
   "license": "MIT",
