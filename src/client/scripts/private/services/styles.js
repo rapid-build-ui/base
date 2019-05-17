@@ -16,8 +16,8 @@ const StylesService = {
 		if (document.getElementById(ID)) return;
 		const styleElm = document.createElement('style');
 		styleElm.id = ID;
+		styleElm.textContent = STYLES;
 		document.head.appendChild(styleElm);
-		styleElm.appendChild(document.createTextNode(STYLES));
 	}
 };
 
