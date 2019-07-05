@@ -17,7 +17,8 @@ const Base = (BaseElm = HTMLElement) => class extends withUpdate(withRenderer(Ba
 		this.rb = {
 			elms:   {},
 			events: EventService.call(this),
-			view:   ViewService.call(this)
+			view:   ViewService.call(this),
+			versions: { base: '0.0.9' }
 		}
 	}
 	disconnectedCallback() { // :void
