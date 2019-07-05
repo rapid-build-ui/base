@@ -1,3 +1,22 @@
+## [0.0.10](https://github.com/rapid-build-ui/rb-base/compare/v0.0.9...v0.0.10) (2019-07-05)
+
+
+### Features
+
+* **version:** add to component properties accessible via this.rb.versions.base ([d2b091c](https://github.com/rapid-build-ui/rb-base/commit/d2b091c))
+
+
+### Performance Improvements
+
+* **StylesService:** populate rb-style-helpers style tag via textContent instead of createTextNode ([72e7ecd](https://github.com/rapid-build-ui/rb-base/commit/72e7ecd))
+
+
+### Dependencies
+
+* **bump:** dep lit-html to v1.1.0 ([77e872e](https://github.com/rapid-build-ui/rb-base/commit/77e872e))
+
+
+
 ## [0.0.9](https://github.com/rapid-build-ui/rb-base/compare/v0.0.8...v0.0.9) (2019-05-09)
 
 
