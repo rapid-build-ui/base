@@ -6,7 +6,7 @@
  - this.rb.view = ViewService.call(this); :object (set in constructor)
  * API
  - this.rb.view.isReady; :boolean (readonly: set in readyCallback())
- - this.rb.view.readyCallback(); :void (run in rb-base's renderer())
+ - this.rb.view.readyCallback(); :void (run in base's renderer())
  **********************************************************************/
 
 /* View Helper
@@ -56,7 +56,7 @@ const ViewService = function() { // :object (this = rb-component)
 		get isReady() { // :boolean (readonly)
 			return _isReady;
 		},
-		/* Called last in rb-base's renderer()
+		/* Called last in base's renderer()
 		 * Sets this.rb.view.isReady then executes
 		 * child class viewReady() once, if present
 		 *******************************************/
