@@ -31,7 +31,7 @@ common:
 			js:
 				es6: true
 				enable: false # temporarily disable for readability
-				fileName: 'rb-base.js'
+				fileName: 'base.js'
 		server:
 			js:
 				es6: true

@@ -11,7 +11,7 @@ example [rb-button](https://rapid-build-ui.io/components/rb-button).
 
 ## Installation
 ```bash
-$ yarn add @rapid-build-ui/rb-base
+$ yarn add @rapid-build-ui/base
 ```
 
 
@@ -44,8 +44,8 @@ $ yarn add @rapid-build-ui/rb-base
 ```js
 /* Example
  **********/
-import { RbBase, props, html } from '../../rb-base/scripts/rb-base.js';
-import View                    from '../../rb-base/scripts/public/view/directives.js';
+import { RbBase, props, html } from '../../base/scripts/base.js';
+import View                    from '../../base/scripts/public/view/directives.js';
 import template                from '../views/rb-popover.html';
 
 export class RbPopover extends RbBase() {
@@ -140,7 +140,7 @@ Use when you need to make sure elements are accessible in the shadow dom.
 
 ```js
 // Example
-import Guid from '../../rb-base/scripts/public/services/guid.js';
+import Guid from '../../base/scripts/public/services/guid.js';
 const guid = Guid.create();
 ```
 
@@ -155,7 +155,7 @@ The first param is the attribute's value which is always a string.
 
 ```js
 // Example
-import Converter from from '../../rb-base/scripts/public/props/converters.js';
+import Converter from from '../../base/scripts/public/props/converters.js';
 class RbIcon {
 	static get props() {
 		return {
@@ -185,7 +185,7 @@ class RbIcon {
 
 ```js
 // Example
-import Type from '../../rb-base/scripts/public/services/type.js';
+import Type from '../../base/scripts/public/services/type.js';
 const isString = Type.is.string('rapid');
 ```
 
@@ -193,12 +193,12 @@ const isString = Type.is.string('rapid');
 ### view directives
 Returns an object of
 [lit-html](https://lit-html.polymer-project.org/guide/template-reference#built-in-directives)
-[directives](https://github.com/rapid-build-ui/rb-base/blob/master/src/client/scripts/public/view/directives.js)
+[directives](https://github.com/rapid-build-ui/base/blob/master/src/client/scripts/public/view/directives.js)
 to be used in view.
 
 ```js
 // Example
-import View from '../../rb-base/scripts/public/view/directives.js';
+import View from '../../base/scripts/public/view/directives.js';
 ```
 
 ```html

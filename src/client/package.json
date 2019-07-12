@@ -1,8 +1,8 @@
 {
-  "name": "@rapid-build-ui/rb-base",
+  "name": "@rapid-build-ui/base",
   "version": "0.0.10",
-  "main": "scripts/rb-base.js",
-  "description": "Rapid Build UI Web Components Base Class: rb-base",
+  "main": "scripts/base.js",
+  "description": "Rapid Build UI Web Components Base Mixin",
   "license": "MIT",
   "engines": {
     "node": "10.x",
@@ -30,10 +30,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rapid-build-ui/rb-base"
+    "url": "https://github.com/rapid-build-ui/base"
   },
   "bugs": {
-    "url": "https://github.com/rapid-build-ui/rb-base/issues"
+    "url": "https://github.com/rapid-build-ui/base/issues"
   },
   "flat": true,
   "dependencies": {
