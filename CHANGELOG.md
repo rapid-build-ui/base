@@ -1,3 +1,25 @@
+## [0.0.11](https://github.com/rapid-build-ui/base/compare/v0.0.10...v0.0.11) (2019-07-12)
+
+
+### Dependencies
+
+* **bump:** dep lit-html to v1.1.1 ([d9981c2](https://github.com/rapid-build-ui/base/commit/d9981c2))
+
+
+### BREAKING CHANGES
+
+* **package name change:** to @rapid-build-ui/base from @rapid-build-ui/rb-base ([523d50d](https://github.com/rapid-build-ui/base/commit/523d50d))
+
+To migrate the code follow the example below:
+
+**Before:**  
+npm install @rapid-build-ui/rb-base
+
+**Now:**  
+npm install @rapid-build-ui/base
+
+
+
 ## [0.0.10](https://github.com/rapid-build-ui/base/compare/v0.0.9...v0.0.10) (2019-07-05)
 
 

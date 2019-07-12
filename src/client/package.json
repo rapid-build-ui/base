@@ -1,6 +1,6 @@
 {
   "name": "@rapid-build-ui/base",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "scripts/base.js",
   "description": "Rapid Build UI Web Components Base Mixin",
   "license": "MIT",
