@@ -21,6 +21,7 @@ common:
 		copy:
 			client: [
 				'package.json'
+				'scripts/generated/**/{LICENSE,package.json}'
 			]
 
 	minify:
