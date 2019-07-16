@@ -1,3 +1,12 @@
+## [0.0.12](https://github.com/rapid-build-ui/base/compare/v0.0.11...v0.0.12) (2019-07-16)
+
+
+### Performance Improvements
+
+* **minify deps:** lit-html and skatejs ([2f001d9](https://github.com/rapid-build-ui/base/commit/2f001d9))
+
+
+
 ## [0.0.11](https://github.com/rapid-build-ui/base/compare/v0.0.10...v0.0.11) (2019-07-12)
 
 

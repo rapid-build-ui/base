@@ -18,7 +18,7 @@ const Base = (BaseElm = HTMLElement) => class extends withUpdate(withRenderer(Ba
 			elms:   {},
 			events: EventService.call(this),
 			view:   ViewService.call(this),
-			versions: { base: '0.0.11' }
+			versions: { base: '0.0.12' }
 		}
 	}
 	disconnectedCallback() { // :void
