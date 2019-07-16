@@ -1,0 +1,1 @@
+export function dashCase(t){return"string"==typeof t?t.split(/([_A-Z])/).reduce((t,e,r)=>{return`${t}${t&&r%2!=0?"-":""}${(e="_"===e?"":e).toLowerCase()}`}):t};export const empty=t=>null==t;export function keys(t){t=t||{};const e=Object.getOwnPropertyNames(t);return Object.getOwnPropertySymbols?e.concat(Object.getOwnPropertySymbols(t)):e};

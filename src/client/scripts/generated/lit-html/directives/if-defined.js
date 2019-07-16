@@ -1,0 +1,1 @@
+import{AttributePart,directive}from"../lit-html.js";export const ifDefined=directive(t=>e=>{if(void 0===t&&e instanceof AttributePart){if(t!==e.value){const t=e.committer.name;e.committer.element.removeAttribute(t)}}else e.setValue(t)});

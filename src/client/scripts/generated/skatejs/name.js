@@ -1,0 +1,1 @@
+import{dashCase}from"./util.js";function format(t,e){return(-1===t.indexOf("-")?`x-${t}`:t)+(e?`-${e}`:"")}export function name(t="element"){t=dashCase(t);let e=0;for(;customElements.get(format(t,e));)++e;return format(t,e)};

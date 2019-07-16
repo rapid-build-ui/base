@@ -1,0 +1,1 @@
+function getValue(e){const{checked:t,type:n,value:o}=e;return"checkbox"===n||"radio"===n?!!t&&(o||!0):o}export function link(e,t="state."){return n=>{const o=n.target||n.composedPath&&n.composedPath()[0],c=getValue(o),a=t||o.name||"value";if(a.indexOf(".")>-1){const t=a.split("."),n=t[0],u=t.pop();t.reduce((e,t)=>e[t],e)[u||o.name]=c,e[n]=e[n]}else e[a]=c}};

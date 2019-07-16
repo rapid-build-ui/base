@@ -35,9 +35,5 @@
   "bugs": {
     "url": "https://github.com/rapid-build-ui/base/issues"
   },
-  "flat": true,
-  "dependencies": {
-    "lit-html": "^1.1.1",
-    "skatejs": "^5.2.4"
-  }
+  "flat": true
 }
