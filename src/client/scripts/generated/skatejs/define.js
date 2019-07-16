@@ -1,0 +1,1 @@
+import{name}from"./name.js";export function define(e){return customElements.define(e.is||name(),e),e};

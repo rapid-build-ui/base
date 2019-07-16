@@ -1,0 +1,1 @@
+import{removeNodes}from"./dom.js";import{NodePart}from"./parts.js";import{templateFactory}from"./template-factory.js";export const parts=new WeakMap;export const render=(t,e,o)=>{let r=parts.get(e);void 0===r&&(removeNodes(e,e.firstChild),parts.set(e,r=new NodePart(Object.assign({templateFactory:templateFactory},o))),r.appendInto(e)),r.setValue(t),r.commit()};

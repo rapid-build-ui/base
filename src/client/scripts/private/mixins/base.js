@@ -1,9 +1,9 @@
 /*************************************
  * BASE MIXIN (for all rb-components)
  *************************************/
-import { withRenderer }      from '../../../../../skatejs/dist/esnext/with-renderer.js';
-import { props, withUpdate } from '../../../../../skatejs/dist/esnext/with-update.js';
-import { html, render }      from '../../../../../lit-html/lit-html.js';
+import { withRenderer }      from '../../generated/skatejs/with-renderer.js';
+import { props, withUpdate } from '../../generated/skatejs/with-update.js';
+import { html, render }      from '../../generated/lit-html/lit-html.js';
 import EventService          from '../../private/services/event.js';
 import ViewService           from '../../private/services/view.js';
 import Styles                from '../../private/services/styles.js';
