@@ -48,6 +48,7 @@ const Helper = {
 	async minifyFiles() { // :Promise<void>
 		const globs = []
 		for (const dep of Paths.deps) {
+			if (dep.minify === false) continue;
 			const dist = `${Paths.dist.path}/${dep.name}`;
 			for (let glob of dep.files) {
 				if (!Help.isFileType(glob, 'js')) continue;

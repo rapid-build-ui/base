@@ -31,6 +31,7 @@ $ yarn add @rapid-build-ui/base
 	* [viewReady()](#viewready)
 
 * [Imports](#imports-optional):
+	* [browser service](#browser-service)
 	* [guid service](#guid-service)
 	* [property converters](#property-converters)
 	* [type service](#type-service)
@@ -133,6 +134,19 @@ Use when you need to make sure elements are accessible in the shadow dom.
 
 
 ## Imports (optional)
+
+### browser service
+Browser detection [documentation](https://lancedikson.github.io/bowser/docs/).
+
+```js
+// Example
+import Browser from '../../base/scripts/public/services/browser.js';
+const browser = Browser.getBrowserName(); // :string (Browser = Bowser.getParser())
+// or
+import Browser, { BrowserInfo } from '../../base/scripts/public/services/browser.js';
+const browser = BrowserInfo; // :object (BrowserInfo = Bowser.parse())
+```
+
 
 ### guid service
 * Methods

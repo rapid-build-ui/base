@@ -19,6 +19,16 @@ const Paths = {
 	},
 	deps: [ // parents: true (preserves path structure)
 		{
+			name: 'bowser',
+			path: `${modules}/bowser`,
+			parents: false,
+			files: [
+				'LICENSE',
+				'package.json',
+				'src/**/*.js'
+			]
+		},
+		{
 			name: 'lit-html',
 			path: `${modules}/lit-html`,
 			parents: true,
