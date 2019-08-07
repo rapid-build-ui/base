@@ -42,4 +42,4 @@ const Base = (BaseElm = HTMLElement) => class extends withUpdate(withRenderer(Ba
 
 /* Export it!
  *************/
-export { Base, html, props };
+export { Base, html, props, render };
