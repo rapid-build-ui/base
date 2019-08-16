@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "bowser": "2.5.2",
-    "lit-html": "1.1.1",
+    "lit-html": "1.1.2",
     "skatejs": "5.2.4"
   }
 }
